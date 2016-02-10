@@ -1,0 +1,41 @@
+<?x	ml version="1.0"?>
+
+<robot name="trunk" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Define a number of dimensions using properties -->
+  <property name="trunk_size_x" value="0.45" />
+  <property name="trunk_size_y" value="0.284" />
+  <property name="trunk_size_z" value="0.545" />
+  <property name="mesh_scale" value="1" />
+     
+  <!-- Define the torso -->
+  <macro name="trunk" params="parent name color *origin">
+    <joint name="waist_joint" type="revolute">
+			<xacro:insert_block name="origin" />
+			<parent link="${parent}_link" />
+			<child link="${name}_link" />
+			<axis xyz="0 0 1" />
+			<limit effort="1.5" velocity="6.178465545" lower="-1.58" upper="1.58" />
+		</joint>
+    
+	<link name="${name}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <!--box size="${torso_size_x} ${torso_size_y} ${torso_size_z}" /-->
+          <mesh filename = "package://crom2_description/meshes/CROM2_trunk.STL" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}" />
+        </geometry>
+        <material name="${color}" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${trunk_size_x} ${trunk_size_y} ${trunk_size_z}" />
+        </geometry>
+      </collision>
+    </link>
+  </macro>
+
+</robot>
+			
+

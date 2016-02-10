@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<robot name="crom2_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+   <!-- Define a offsets using properties -->
+   <property name="torso_offset_x" value="0.0" />
+   <property name="torso_offset_y" value="0.0" />
+   <property name="torso_offset_z" value="0.0" />
+   <property name="trunk_offset_x" value="0.0" />
+   <property name="trunk_offset_y" value="0.0" />
+   <property name="trunk_offset_z" value="1.078" />
+   <property name="head_offset_x" value="0.0" />
+   <property name="head_offset_y" value="0.0" />
+   <property name="head_offset_z" value="0.545" />
+
+   <!-- Include all component files -->
+   <xacro:include filename="$(find crom2_description)/urdf/materials.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/crom2_base.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/crom2_trunk.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/crom2_head.urdf.xacro" />
+   <!--xacro:include filename="$(find crom2_description)/urdf/crom2_head.urdf.xacro" /-->
+   
+ 
+   <!-- Add the base -->
+   <base name="base" color="Blue"/>
+   
+   <!-- Attach the trunk -->
+   <trunk name="trunk" parent="base" color="Blue">
+      <origin xyz="${trunk_offset_x} ${trunk_offset_y} ${trunk_offset_z}" rpy="0 0 0" />
+   </trunk>
+   
+   <!-- Attach the head -->
+   <head name="head" parent="trunk" color="Blue">
+      <origin xyz="${head_offset_x} ${head_offset_y} ${head_offset_z}" rpy="0 0 0" />
+   </head>
+   
+   
+  <link name="base_footprint">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.05 0.01" />
+        </geometry>
+        <!--material name="TransparentGreen" /-->
+      </visual>
+  </link>
+  
+  <joint name="$base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />        
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+
+</robot>
