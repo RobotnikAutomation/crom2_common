@@ -12,12 +12,12 @@
   <!-- Define the head -->
   
   <macro name="head" params="parent name color *origin">
-	<joint name="${parent}_${name}_joint" type="fixed">
+	<joint name="${name}_frame_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}_link"/>
-      <child link="${name}_pan_tilt_1_link"/>
+      <child link="${name}_frame_link"/>
     </joint>
-    <link name="${name}_pan_tilt_1_link">
+    <link name="${name}_frame_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -33,12 +33,12 @@
       </collision>
     </link>
     
-    <joint name="${name}_pan-tilt_2_joint" type="fixed">
+    <joint name="${name}_pan_motor_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${name}_pan_tilt_1_link"/>
-      <child link="${name}_dynamixel_L42_pan_link"/>
+      <parent link="${name}_frame_link"/>
+      <child link="${name}_pan_motor_link"/>
     </joint>
-    <link name="${name}_dynamixel_L42_pan_link">
+    <link name="${name}_pan_motor_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -56,12 +56,12 @@
     
     <joint name="${name}_pan_joint" type="revolute">
       <origin xyz="0 0 0.111" rpy="0 0 0" />
-      <parent link="${name}_dynamixel_L42_pan_link"/>
-      <child link="${name}_pan_tilt_2_link"/>
+      <parent link="${name}_pan_motor_link"/>
+      <child link="${name}_pan_link"/>
       <axis xyz="0 0 1" />
 	  <limit effort="1.5" velocity="6.178465545" lower="-1.58" upper="1.58" />
     </joint>
-    <link name="${name}_pan_tilt_2_link">
+    <link name="${name}_pan_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -78,34 +78,34 @@
     </link>
     
     <joint name="${name}_tilt_joint" type="revolute">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${name}_pan_tilt_2_link"/>
-      <child link="${name}_dynamixel_L42_tilt_link"/>
-      <axis xyz="0 1 0" />
-	  <limit effort="1.5" velocity="6.178465545" lower="-1.58" upper="1.58" />
+      <origin xyz="0 0 0" rpy="-1.57079 0 0" />
+      <parent link="${name}_pan_link"/>
+      <child link="${name}_tilt_link"/>
+      <axis xyz="0 0 1" />
+	  <limit effort="1.5" velocity="6.178465545" lower="-1.57079" upper="1.57079" />
     </joint>
-    <link name="${name}_dynamixel_L42_tilt_link">
-      <visual>
-        <origin xyz="0 -0.027 0" rpy="-1.58 0 0" />
+    <link name="${name}_tilt_link">
+		<visual>
+        <origin xyz="0 0 -0.027" rpy="0 0 0" />
         <geometry>
           <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
         </geometry>
         <material name="Black" />
       </visual>
       <collision>
-        <origin xyz="0 -0.027 0" rpy="-1.58 0 0" />
+        <origin xyz="0 0 -0.027" rpy="0 0 0" />
         <geometry>
           <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
         </geometry>
       </collision>
     </link>
     
-    <joint name="${name}_pan_tilt_3_joint" type="fixed">
+    <joint name="${name}_tilt_motor_2_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${name}_dynamixel_L42_tilt_link"/>
-      <child link="${name}_pan_tilt_3_link"/>
+      <parent link="${name}_pan_link"/>
+      <child link="${name}_tilt_aux_link"/>
     </joint>
-    <link name="${name}_pan_tilt_3_link">
+    <link name="${name}_tilt_aux_link">
       <visual>
         <origin xyz="0 -0.027 0" rpy="0 0 0" />
         <geometry>
@@ -123,12 +123,12 @@
     
     
     
-    <joint name="${name}_pan_tilt_4_joint" type="fixed">
-      <origin xyz="0 0 0.021" rpy="0 0 0" />
-      <parent link="${name}_dynamixel_L42_tilt_link"/>
-      <child link="${name}_pan_tilt_4_link"/>
+    <joint name="${name}_camera_frame_joint" type="fixed">
+      <origin xyz="0 -0.021 0" rpy="1.57079  0 0" />
+      <parent link="${name}_tilt_link"/>
+      <child link="${name}_camera_frame_link"/>
     </joint>
-    <link name="${name}_pan_tilt_4_link">
+    <link name="${name}_camera_frame_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -146,7 +146,7 @@
     
     <joint name="${name}_f10_camera_right_joint" type="fixed">
       <origin xyz="0.0075 -0.055 0.015" rpy="0 0 0" />
-      <parent link="${name}_pan_tilt_4_link"/>
+      <parent link="${name}_camera_frame_link"/>
       <child link="${name}_f10_camera_right_link"/>
     </joint>
     <link name="${name}_f10_camera_right_link">
@@ -167,7 +167,7 @@
     
       <joint name="${name}_f10_camera_left_joint" type="fixed">
       <origin xyz="0.0075 0.055 0.015" rpy="0 0 0" />
-      <parent link="${name}_pan_tilt_4_link"/>
+      <parent link="${name}_camera_frame_link"/>
       <child link="${name}_f10_camera_left_link"/>
     </joint>
     <link name="${name}_f10_camera_left_link">
@@ -188,7 +188,7 @@
     
     <joint name="${name}_xtion_camera_joint" type="fixed">
       <origin xyz="0.041 0 0.065" rpy="0 0 0" />
-      <parent link="${name}_pan_tilt_4_link"/>
+      <parent link="${name}_camera_frame_link"/>
       <child link="${name}_xtion_camera_link"/>
     </joint>
     <link name="${name}_xtion_camera_link">

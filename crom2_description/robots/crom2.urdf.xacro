@@ -21,34 +21,20 @@
    <!--xacro:include filename="$(find crom2_description)/urdf/crom2_head.urdf.xacro" /-->
    
  
+  <link name="base_footprint">
+  </link>
+  
    <!-- Add the base -->
-   <base name="base" color="Blue"/>
+   <base name="base" color="Blue" parent="base_footprint"/>
    
    <!-- Attach the trunk -->
-   <trunk name="trunk" parent="base" color="Blue">
+   <trunk name="waist" parent="base" color="Blue">
       <origin xyz="${trunk_offset_x} ${trunk_offset_y} ${trunk_offset_z}" rpy="0 0 0" />
    </trunk>
    
    <!-- Attach the head -->
-   <head name="head" parent="trunk" color="Blue">
+   <head name="head" parent="waist" color="Blue">
       <origin xyz="${head_offset_x} ${head_offset_y} ${head_offset_z}" rpy="0 0 0" />
    </head>
-   
-   
-  <link name="base_footprint">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <box size="0.05 0.05 0.01" />
-        </geometry>
-        <!--material name="TransparentGreen" /-->
-      </visual>
-  </link>
-  
-  <joint name="$base_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />        
-    <parent link="base_footprint"/>
-    <child link="base_link" />
-  </joint>
 
 </robot>
