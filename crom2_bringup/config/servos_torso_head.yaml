@@ -1,0 +1,41 @@
+servos: 
+
+# WAIST
+- id: 1 
+  joint_name: waist_joint
+  model_name: H54-200-S500-R
+  name: H54
+  model_number: 00001
+  cpr: 501900 
+  gear_reduction: 500.0
+  max_vel_value: 8300.0
+  max_vel_rads: 1.460844
+  min_rad: -1.57
+  max_rad: 1.57
+
+# PAN
+- id: 2
+  joint_name: head_pan_joint
+  model_name: L42
+  name: L42
+  model_number: 00002
+  cpr: 4096 
+  gear_reduction: 300.0
+  max_vel_value: 400.0
+  max_vel_rads: 2.98452
+  min_rad: -1.57
+  max_rad: 1.57
+
+
+# TILT
+- id: 3
+  joint_name: head_tilt_joint
+  model_name: L42
+  name: L42
+  model_number: 00003
+  cpr: 4096 
+  gear_reduction: 300.0
+  max_vel_value: 400.0
+  max_vel_rads: 2.98452
+  min_rad: -1.57
+  max_rad: 1.57
