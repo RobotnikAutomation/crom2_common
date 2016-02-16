@@ -23,7 +23,7 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <!--box size="${torso_size_x} ${torso_size_y} ${torso_size_z}" /-->
-          <mesh filename = "package://crom2_description/meshes/CROM2_trunk.STL" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_trunk.dae"/>
         </geometry>
         <material name="${color}" />
       </visual>

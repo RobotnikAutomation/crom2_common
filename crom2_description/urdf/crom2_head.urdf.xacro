@@ -21,14 +21,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.STL"/>
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae"/>
         </geometry>
         <material name="Blue" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.STL" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae" />
         </geometry>
       </collision>
     </link>
@@ -42,14 +42,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
+          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
         </geometry>
         <material name="Black" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
+          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
         </geometry>
       </collision>
     </link>
@@ -65,14 +65,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.STL" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.dae" />
         </geometry>
         <material name="Blue" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.STL" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.dae" />
         </geometry>
       </collision>
     </link>
@@ -88,14 +88,14 @@
 		<visual>
         <origin xyz="0 0 -0.027" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
+          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
         </geometry>
         <material name="Black" />
       </visual>
       <collision>
         <origin xyz="0 0 -0.027" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
+          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
         </geometry>
       </collision>
     </link>
@@ -109,14 +109,14 @@
       <visual>
         <origin xyz="0 -0.027 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.STL" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.dae" />
         </geometry>
         <material name="Grey" />
       </visual>
       <collision>
         <origin xyz="0 -0.027 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.STL" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.dae" />
         </geometry>
       </collision>
     </link>
@@ -132,14 +132,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.STL" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.dae" />
         </geometry>
         <material name="Blue" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.STL" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.dae" />
         </geometry>
       </collision>
     </link>
@@ -153,14 +153,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
+          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
         </geometry>
         <material name="Black" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
+          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
         </geometry>
       </collision>
     </link>
@@ -174,14 +174,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
+          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
         </geometry>
         <material name="Black" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
+          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
         </geometry>
       </collision>
     </link>
@@ -195,14 +195,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/xtion_camera.STL" />
+          <mesh filename = "package://crom2_description/meshes/xtion_camera.dae" />
         </geometry>
         <material name="Black" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/xtion_camera.STL" />
+          <mesh filename = "package://crom2_description/meshes/xtion_camera.dae" />
         </geometry>
       </collision>
     </link>
