@@ -16,14 +16,15 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_base.STL"/>
+          <mesh filename = "package://crom2_description/meshes/CROM2_base.dae"/>
         </geometry>
         <material name="${color}" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="${base_size_x} ${base_size_y} ${base_size_z}" />
+          <!--box size="${base_size_x} ${base_size_y} ${base_size_z}" /-->
+           <mesh filename = "package://crom2_description/meshes/CROM2_base.dae"/>
         </geometry>
       </collision>
     </link>

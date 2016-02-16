@@ -30,7 +30,8 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="${trunk_size_x} ${trunk_size_y} ${trunk_size_z}" />
+			<mesh filename = "package://crom2_description/meshes/CROM2_trunk.dae"/>
+          <!--box size="${trunk_size_x} ${trunk_size_y} ${trunk_size_z}" /-->
         </geometry>
       </collision>
     </link>
