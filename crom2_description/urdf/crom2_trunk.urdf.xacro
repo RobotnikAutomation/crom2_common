@@ -7,6 +7,7 @@
   <property name="trunk_size_y" value="0.284" />
   <property name="trunk_size_z" value="0.545" />
   <property name="mesh_scale" value="1" />
+  <property name="pi_2" value="1.57079" />
      
   <!-- Define the torso -->
   <macro name="trunk" params="parent name color *origin">
@@ -15,7 +16,7 @@
 		<parent link="${parent}_link" />
 		<child link="${name}_link" />
 		<axis xyz="0 0 1" />
-		<limit effort="1.5" velocity="6.178465545" lower="-1.58" upper="1.58" />
+		<limit effort="1.5" velocity="1.0" lower="-${pi_2}" upper="${pi_2}" />
 	</joint>
     
 	<link name="${name}_link">

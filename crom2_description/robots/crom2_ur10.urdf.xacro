@@ -44,16 +44,16 @@
    <joint name="right_arm_joint" type="fixed">
 		<parent link="waist_link" />
 		<child link = "right_arm_base_link" />
-		<origin xyz="0.0 -0.225 0.345" rpy="${pi_2} 0.0 0.0" />
+		<origin xyz="0.0 -0.225 0.345" rpy="0 ${-pi_2} ${pi_2}" />
    </joint>
-   <xacro:ur10_robot prefix="right_arm_" joint_limited="false"/>
+   <xacro:ur10_robot prefix="right_arm_" joint_limited="true"/>
   
    <joint name="left_arm_joint" type="fixed">
 		<parent link="waist_link" />
 		<child link = "left_arm_base_link" />
-		<origin xyz="0.0 0.225 0.345" rpy="-${pi_2} 0.0 0.0" />
+		<origin xyz="0.0 0.225 0.345" rpy="0 -${pi_2} -${pi_2}" />
    </joint>
-   <xacro:ur10_robot prefix="left_arm_" joint_limited="false"/>
+   <xacro:ur10_robot prefix="left_arm_" joint_limited="true"/>
   
 
 </robot>

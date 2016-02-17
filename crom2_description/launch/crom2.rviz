@@ -7,7 +7,9 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-      Splitter Ratio: 0.5
+        - /TF1
+        - /TF1/Frames1
+      Splitter Ratio: 0.634228
     Tree Height: 775
   - Class: rviz/Selection
     Name: Selection
@@ -49,7 +51,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 0.8
+    - Alpha: 0.3
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -221,19 +223,124 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
+        base_footprint:
+          Value: false
+        base_link:
+          Value: false
+        head_camera_frame_link:
+          Value: false
+        head_f10_camera_left_link:
+          Value: false
+        head_f10_camera_right_link:
+          Value: false
+        head_frame_link:
+          Value: false
+        head_pan_link:
+          Value: false
+        head_pan_motor_link:
+          Value: false
+        head_tilt_aux_link:
+          Value: false
+        head_tilt_link:
+          Value: false
+        head_xtion_camera_link:
+          Value: false
+        left_arm_base:
+          Value: true
+        left_arm_base_link:
+          Value: false
+        left_arm_ee_link:
+          Value: false
+        left_arm_forearm_link:
+          Value: false
+        left_arm_shoulder_link:
+          Value: false
+        left_arm_tool0:
+          Value: false
+        left_arm_upper_arm_link:
+          Value: false
+        left_arm_wrist_1_link:
+          Value: false
+        left_arm_wrist_2_link:
+          Value: false
+        left_arm_wrist_3_link:
+          Value: false
+        right_arm_base:
+          Value: false
+        right_arm_base_link:
+          Value: false
+        right_arm_ee_link:
+          Value: false
+        right_arm_forearm_link:
+          Value: false
+        right_arm_shoulder_link:
+          Value: false
+        right_arm_tool0:
+          Value: false
+        right_arm_upper_arm_link:
+          Value: false
+        right_arm_wrist_1_link:
+          Value: false
+        right_arm_wrist_2_link:
+          Value: false
+        right_arm_wrist_3_link:
+          Value: false
+        waist_link:
+          Value: false
       Marker Scale: 0.2
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        base_footprint:
+          base_link:
+            waist_link:
+              head_frame_link:
+                head_pan_motor_link:
+                  head_pan_link:
+                    head_tilt_aux_link:
+                      {}
+                    head_tilt_link:
+                      head_camera_frame_link:
+                        head_f10_camera_left_link:
+                          {}
+                        head_f10_camera_right_link:
+                          {}
+                        head_xtion_camera_link:
+                          {}
+              left_arm_base_link:
+                left_arm_base:
+                  {}
+                left_arm_shoulder_link:
+                  left_arm_upper_arm_link:
+                    left_arm_forearm_link:
+                      left_arm_wrist_1_link:
+                        left_arm_wrist_2_link:
+                          left_arm_wrist_3_link:
+                            left_arm_ee_link:
+                              {}
+                            left_arm_tool0:
+                              {}
+              right_arm_base_link:
+                right_arm_base:
+                  {}
+                right_arm_shoulder_link:
+                  right_arm_upper_arm_link:
+                    right_arm_forearm_link:
+                      right_arm_wrist_1_link:
+                        right_arm_wrist_2_link:
+                          right_arm_wrist_3_link:
+                            right_arm_ee_link:
+                              {}
+                            right_arm_tool0:
+                              {}
       Update Interval: 0
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -258,7 +365,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.79831
+      Distance: 3.50636
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -270,10 +377,10 @@ Visualization Manager:
         Z: 0.303792
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.765399
+      Pitch: 0.945399
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.25359
+      Yaw: 0.390405
     Saved: ~
 Window Geometry:
   Displays:
