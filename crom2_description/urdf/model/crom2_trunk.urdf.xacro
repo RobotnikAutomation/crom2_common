@@ -6,10 +6,9 @@
   <property name="trunk_size_x" value="0.45" />
   <property name="trunk_size_y" value="0.284" />
   <property name="trunk_size_z" value="0.545" />
-  <property name="mesh_scale" value="1" />
   <property name="pi_2" value="1.57079" />
      
-  <!-- Define the torso -->
+  <!-- Define the trunk -->
   <macro name="trunk" params="parent name color *origin">
     <joint name="${name}_joint" type="revolute">
 		<xacro:insert_block name="origin" />
@@ -20,11 +19,16 @@
 	</joint>
     
 	<link name="${name}_link">
+		<inertial>
+		  <mass value="22.07245" />
+		  <origin xyz="0 0 0" />
+		  <inertia  ixx="1259.328" ixy="-0.695"  ixz="15.497"  iyy="934.927"  iyz="-0.007"  izz="771.083" />
+		</inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <!--box size="${torso_size_x} ${torso_size_y} ${torso_size_z}" /-->
-          <mesh filename = "package://crom2_description/meshes/CROM2_trunk.dae"/>
+          <mesh filename = "package://crom2_description/meshes/CROM2_trunk.STL"/>
         </geometry>
         <material name="${color}" />
       </visual>

@@ -22,7 +22,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae"/>
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.STL"/>
         </geometry>
         <material name="Blue" />
       </visual>
@@ -43,7 +43,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
+          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
         </geometry>
         <material name="Black" />
       </visual>
@@ -66,7 +66,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.dae" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.STL" />
         </geometry>
         <material name="Blue" />
       </visual>
@@ -89,7 +89,7 @@
 		<visual>
         <origin xyz="0 0 -0.027" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
+          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
         </geometry>
         <material name="Black" />
       </visual>
@@ -110,7 +110,7 @@
       <visual>
         <origin xyz="0 -0.027 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.dae" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.STL" />
         </geometry>
         <material name="Grey" />
       </visual>
@@ -133,7 +133,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.dae" />
+          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.STL" />
         </geometry>
         <material name="Blue" />
       </visual>
@@ -154,7 +154,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
+          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
         </geometry>
         <material name="Black" />
       </visual>
@@ -183,7 +183,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
+          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
         </geometry>
         <material name="Black" />
       </visual>
@@ -212,7 +212,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/xtion_camera.dae" />
+          <mesh filename = "package://crom2_description/meshes/xtion_camera.STL" />
         </geometry>
         <material name="Black" />
       </visual>

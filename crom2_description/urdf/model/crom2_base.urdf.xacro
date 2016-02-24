@@ -16,7 +16,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_base.dae"/>
+          <mesh filename = "package://crom2_description/meshes/CROM2_base.STL"/>
         </geometry>
         <material name="${color}" />
       </visual>
