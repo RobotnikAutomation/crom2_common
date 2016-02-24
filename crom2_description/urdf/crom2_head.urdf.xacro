@@ -8,6 +8,7 @@
   <property name="head_size_y" value="0.284" />
   <property name="head_size_z" value="0.545" />
   <property name="mesh_scale" value="1" />
+  <property name="M_PI" value="3.1415926535897931" />
      
   <!-- Define the head -->
   
@@ -126,9 +127,9 @@
     <joint name="${name}_camera_frame_joint" type="fixed">
       <origin xyz="0 -0.021 0" rpy="1.57079  0 0" />
       <parent link="${name}_tilt_link"/>
-      <child link="${name}_camera_frame_link"/>
+      <child link="${name}_camera_frame"/>
     </joint>
-    <link name="${name}_camera_frame_link">
+    <link name="${name}_camera_frame">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -146,10 +147,10 @@
     
     <joint name="${name}_f10_camera_right_joint" type="fixed">
       <origin xyz="0.0075 -0.055 0.015" rpy="0 0 0" />
-      <parent link="${name}_camera_frame_link"/>
-      <child link="${name}_f10_camera_right_link"/>
+      <parent link="${name}_camera_frame"/>
+      <child link="${name}_f10_camera_right_frame"/>
     </joint>
-    <link name="${name}_f10_camera_right_link">
+    <link name="${name}_f10_camera_right_frame">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -165,12 +166,20 @@
       </collision>
     </link>
     
-      <joint name="${name}_f10_camera_left_joint" type="fixed">
-      <origin xyz="0.0075 0.055 0.015" rpy="0 0 0" />
-      <parent link="${name}_camera_frame_link"/>
-      <child link="${name}_f10_camera_left_link"/>
+    <joint name="${name}_f10_camera_right_optical_joint" type="fixed">
+      <origin xyz="0.0 0.0 0.0145" rpy="${M_PI/2} 0 ${M_PI/2}" />
+      <parent link="${name}_f10_camera_right_frame"/>
+      <child link="${name}_f10_camera_right_optical_frame"/>
     </joint>
-    <link name="${name}_f10_camera_left_link">
+    <link name="${name}_f10_camera_right_optical_frame">
+    </link>
+    
+    <joint name="${name}_f10_camera_left_joint" type="fixed">
+      <origin xyz="0.0075 0.055 0.015" rpy="0 0 0" />
+      <parent link="${name}_camera_frame"/>
+      <child link="${name}_f10_camera_left_frame"/>
+    </joint>
+    <link name="${name}_f10_camera_left_frame">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -184,14 +193,22 @@
           <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
         </geometry>
       </collision>
+    </link>
+    
+    <joint name="${name}_f10_camera_left_optical_joint" type="fixed">
+      <origin xyz="0.0 0.0 0.0145" rpy="${M_PI/2} 0 ${M_PI/2}" />
+      <parent link="${name}_f10_camera_left_frame"/>
+      <child link="${name}_f10_camera_left_optical_frame"/>
+    </joint>
+    <link name="${name}_f10_camera_left_optical_frame">
     </link>
     
     <joint name="${name}_xtion_camera_joint" type="fixed">
       <origin xyz="0.041 0 0.065" rpy="0 0 0" />
-      <parent link="${name}_camera_frame_link"/>
-      <child link="${name}_xtion_camera_link"/>
+      <parent link="${name}_camera_frame"/>
+      <child link="${name}_xtion_camera_frame"/>
     </joint>
-    <link name="${name}_xtion_camera_link">
+    <link name="${name}_xtion_camera_frame">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -206,14 +223,7 @@
         </geometry>
       </collision>
     </link>
-    
-    
-    
-    
-    
-    
-    
-    
+   
   </macro>
 
 </robot>
