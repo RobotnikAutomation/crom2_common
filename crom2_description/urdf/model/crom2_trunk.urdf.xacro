@@ -1,21 +1,22 @@
 <?xml version="1.0"?>
 
 <robot name="trunk" xmlns:xacro="http://ros.org/wiki/xacro">
+	
+  <xacro:include filename="$(find crom2_description)/urdf/gazebo/crom2_trunk.gazebo.xacro" />
 
   <!-- Define a number of dimensions using properties -->
   <property name="trunk_size_x" value="0.45" />
   <property name="trunk_size_y" value="0.284" />
   <property name="trunk_size_z" value="0.545" />
-  <property name="pi_2" value="1.57079" />
-     
+       
   <!-- Define the trunk -->
-  <macro name="trunk" params="parent name color *origin">
+  <xacro:macro name="trunk_model" params="parent name color *origin">
     <joint name="${name}_joint" type="revolute">
 		<xacro:insert_block name="origin" />
 		<parent link="${parent}_link" />
 		<child link="${name}_link" />
 		<axis xyz="0 0 1" />
-		<limit effort="1.5" velocity="1.0" lower="-${pi_2}" upper="${pi_2}" />
+		<limit effort="1.5" velocity="1.0" lower="${reverse*M_PI/2}" upper="${M_PI/2}" />
 	</joint>
     
 	<link name="${name}_link">
@@ -27,7 +28,6 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <!--box size="${torso_size_x} ${torso_size_y} ${torso_size_z}" /-->
           <mesh filename = "package://crom2_description/meshes/CROM2_trunk.STL"/>
         </geometry>
         <material name="${color}" />
@@ -35,12 +35,15 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-			<mesh filename = "package://crom2_description/meshes/CROM2_trunk.dae"/>
-          <!--box size="${trunk_size_x} ${trunk_size_y} ${trunk_size_z}" /-->
+		  <mesh filename = "package://crom2_description/meshes/CROM2_trunk.dae"/>
         </geometry>
       </collision>
     </link>
-  </macro>
+    
+    <!--Add trunk_gazebo macro -->
+	<trunk_gazebo name="${name}" />
+	
+  </xacro:macro>
 
 </robot>
 			

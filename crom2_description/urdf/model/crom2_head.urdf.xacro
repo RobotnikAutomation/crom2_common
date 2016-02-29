@@ -1,229 +1,277 @@
 <?xml version="1.0"?>
 
 <robot name="head" xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:include filename="$(find crom2_description)/urdf/gazebo/crom2_head.gazebo.xacro" />
+	<!--xacro:include filename="$(find crom2_description)/urdf/transmission/crom2_head.transmission.xacro" /-->
 
-  <!-- Define a number of dimensions using properties -->
-  <property name="head_pan_offset_x" value="0.45" />
-  <property name="head_pan_offset_y" value="0.45" />
-  <property name="head_size_y" value="0.284" />
-  <property name="head_size_z" value="0.545" />
-  <property name="mesh_scale" value="1" />
-  <property name="M_PI" value="3.1415926535897931" />
+	<!-- Define a number of dimensions using properties -->
+	<xacro:property name="head_pan_joint_offset_z" value="0.111" />
+	<xacro:property name="head_tilt_servo_offset" value="0.027" />
+	<xacro:property name="head_size_x" value="0.188" />
+	<xacro:property name="head_size_y" value="0.180" />
+	<xacro:property name="head_size_z" value="0.217" />
+	<xacro:property name="camara_frame_offset" value="0.021" />
+	<xacro:property name="f10_camara_offset_x" value="0.0075" />
+	<xacro:property name="f10_camara_offset_y" value="0.055" />
+	<xacro:property name="f10_camara_offset_z" value="0.015" />
+	<xacro:property name="f10_optical_offset" value="0.0145" />
+	<xacro:property name="xtion_camara_offset_x" value="0.041" />
+	<xacro:property name="xtion_camara_offset_y" value="0.0" />
+	<xacro:property name="xtion_camara_offset_z" value="0.065" />
+	<xacro:property name="head_joint_damping" value="0.0" />
+	<xacro:property name="head_joint_friction" value="0.0" />
+	<xacro:property name="head_joint_effort_limit" value="100.0" />
+	<xacro:property name="head_joint_velocity_limit" value="100.0" />
+	<xacro:property name="head_pan_joint_upper_limit" value="${M_PI/2}" />    
+	<xacro:property name="head_pan_joint_lower_limit" value="${reverse*M_PI/2}" /> 
+	<xacro:property name="head_tilt_joint_upper_limit" value="${M_PI/2}" />
+	<xacro:property name="head_tilt_joint_lower_limit" value="${reverse*M_PI/2}" />
+	
      
-  <!-- Define the head -->
-  
-  <macro name="head" params="parent name color *origin">
-	<joint name="${name}_frame_joint" type="fixed">
-      <xacro:insert_block name="origin" />
-      <parent link="${parent}_link"/>
-      <child link="${name}_frame_link"/>
-    </joint>
-    <link name="${name}_frame_link">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.STL"/>
-        </geometry>
-        <material name="Blue" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae" />
-        </geometry>
-      </collision>
-    </link>
-    
-    <joint name="${name}_pan_motor_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${name}_frame_link"/>
-      <child link="${name}_pan_motor_link"/>
-    </joint>
-    <link name="${name}_pan_motor_link">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
-        </geometry>
-        <material name="Black" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
-        </geometry>
-      </collision>
-    </link>
-    
-    <joint name="${name}_pan_joint" type="revolute">
-      <origin xyz="0 0 0.111" rpy="0 0 0" />
-      <parent link="${name}_pan_motor_link"/>
-      <child link="${name}_pan_link"/>
-      <axis xyz="0 0 1" />
-	  <limit effort="1.5" velocity="6.178465545" lower="-1.58" upper="1.58" />
-    </joint>
-    <link name="${name}_pan_link">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.STL" />
-        </geometry>
-        <material name="Blue" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.dae" />
-        </geometry>
-      </collision>
-    </link>
-    
-    <joint name="${name}_tilt_joint" type="revolute">
-      <origin xyz="0 0 0" rpy="-1.57079 0 0" />
-      <parent link="${name}_pan_link"/>
-      <child link="${name}_tilt_link"/>
-      <axis xyz="0 0 -1" />
-	  <limit effort="1.5" velocity="6.178465545" lower="-1.57079" upper="1.57079" />
-    </joint>
-    <link name="${name}_tilt_link">
-		<visual>
-        <origin xyz="0 0 -0.027" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
-        </geometry>
-        <material name="Black" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 -0.027" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
-        </geometry>
-      </collision>
-    </link>
-    
-    <joint name="${name}_tilt_motor_2_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${name}_pan_link"/>
-      <child link="${name}_tilt_aux_link"/>
-    </joint>
-    <link name="${name}_tilt_aux_link">
-      <visual>
-        <origin xyz="0 -0.027 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.STL" />
-        </geometry>
-        <material name="Grey" />
-      </visual>
-      <collision>
-        <origin xyz="0 -0.027 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.dae" />
-        </geometry>
-      </collision>
-    </link>
-    
-    
-    
-    <joint name="${name}_camera_frame_joint" type="fixed">
-      <origin xyz="0 -0.021 0" rpy="1.57079  0 0" />
-      <parent link="${name}_tilt_link"/>
-      <child link="${name}_camera_frame"/>
-    </joint>
-    <link name="${name}_camera_frame">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.STL" />
-        </geometry>
-        <material name="Blue" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.dae" />
-        </geometry>
-      </collision>
-    </link>
-    
-    <joint name="${name}_f10_camera_right_joint" type="fixed">
-      <origin xyz="0.0075 -0.055 0.015" rpy="0 0 0" />
-      <parent link="${name}_camera_frame"/>
-      <child link="${name}_f10_camera_right_frame"/>
-    </joint>
-    <link name="${name}_f10_camera_right_frame">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
-        </geometry>
-        <material name="Black" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
-        </geometry>
-      </collision>
-    </link>
-    
-    <joint name="${name}_f10_camera_right_optical_joint" type="fixed">
-      <origin xyz="0.0 0.0 0.0145" rpy="${M_PI/2} 0 ${M_PI/2}" />
-      <parent link="${name}_f10_camera_right_frame"/>
-      <child link="${name}_f10_camera_right_optical_frame"/>
-    </joint>
-    <link name="${name}_f10_camera_right_optical_frame">
-    </link>
-    
-    <joint name="${name}_f10_camera_left_joint" type="fixed">
-      <origin xyz="0.0075 0.055 0.015" rpy="0 0 0" />
-      <parent link="${name}_camera_frame"/>
-      <child link="${name}_f10_camera_left_frame"/>
-    </joint>
-    <link name="${name}_f10_camera_left_frame">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
-        </geometry>
-        <material name="Black" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
-        </geometry>
-      </collision>
-    </link>
-    
-    <joint name="${name}_f10_camera_left_optical_joint" type="fixed">
-      <origin xyz="0.0 0.0 0.0145" rpy="${M_PI/2} 0 ${M_PI/2}" />
-      <parent link="${name}_f10_camera_left_frame"/>
-      <child link="${name}_f10_camera_left_optical_frame"/>
-    </joint>
-    <link name="${name}_f10_camera_left_optical_frame">
-    </link>
-    
-    <joint name="${name}_xtion_camera_joint" type="fixed">
-      <origin xyz="0.041 0 0.065" rpy="0 0 0" />
-      <parent link="${name}_camera_frame"/>
-      <child link="${name}_xtion_camera_frame"/>
-    </joint>
-    <link name="${name}_xtion_camera_frame">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/xtion_camera.STL" />
-        </geometry>
-        <material name="Black" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename = "package://crom2_description/meshes/xtion_camera.dae" />
-        </geometry>
-      </collision>
-    </link>
-   
-  </macro>
+	<!-- Define the head -->
+	<xacro:macro name="head_model" params="parent name color *origin">
+	
+	<!-- BASE HEAD -->
+		<joint name="${name}_frame_joint" type="fixed">
+			<xacro:insert_block name="origin" />
+			<parent link="${parent}_link"/>
+			<child link="${name}_frame_link"/>
+		</joint>
+				
+		<link name="${name}_frame_link">
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.STL"/>
+			</geometry>
+			<material name="Blue" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae" />
+			</geometry>
+		  </collision>
+		</link>
+
+	<!-- PAN HEAD -->
+		<joint name="${name}_pan_motor_joint" type="fixed">
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<parent link="${name}_frame_link"/>
+			<child link="${name}_pan_motor_link"/>
+		</joint>
+		
+		<link name="${name}_pan_motor_link">
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
+			</geometry>
+			<material name="Black" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
+			</geometry>
+		  </collision>
+		</link>
+
+		<joint name="${name}_pan_joint" type="revolute">
+		  <origin xyz="0 0 ${head_pan_joint_offset_z}" rpy="0 0 0" />
+		  <parent link="${name}_pan_motor_link"/>
+		  <child link="${name}_pan_link"/>
+		  <axis xyz="0 0 1" />
+		  <limit effort="${head_joint_effort_limit}" velocity="${head_joint_velocity_limit}" upper="${head_tilt_joint_upper_limit}" lower="${head_tilt_joint_lower_limit}"/>
+		  <joint_properties damping="${head_joint_damping}" friction="{head_joint_friction}"/>
+		</joint>
+		
+		<link name="${name}_pan_link">
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.STL" />
+			</geometry>
+			<material name="Blue" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.dae" />
+			</geometry>
+		  </collision>
+		</link>
+
+	<!-- TILT HEAD -->
+		<joint name="${name}_tilt_joint" type="revolute">
+		  <origin xyz="0 0 0" rpy="${reverse*M_PI/2} 0 0" />
+		  <parent link="${name}_pan_link"/>
+		  <child link="${name}_tilt_link"/>
+		  <axis xyz="0 0 -1" />
+		  <limit effort="${head_joint_effort_limit}" velocity="${head_joint_velocity_limit}" upper="${head_tilt_joint_upper_limit}" lower="${head_tilt_joint_lower_limit}"/>
+		  <joint_properties damping="${head_joint_damping}" friction="{head_joint_friction}"/>
+		</joint>
+		
+		<link name="${name}_tilt_link">
+			<visual>
+			<origin xyz="0 0 ${reverse*head_tilt_servo_offset}" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
+			</geometry>
+			<material name="Black" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 0 ${head_tilt_servo_offset}" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
+			</geometry>
+		  </collision>
+		</link>
+
+		<joint name="${name}_tilt_motor_joint" type="fixed">
+		  <origin xyz="0 0 0" rpy="0 0 0" />
+		  <parent link="${name}_pan_link"/>
+		  <child link="${name}_tilt_motor_link"/>
+		</joint>
+		<link name="${name}_tilt_motor_link">
+		  <visual>
+			<origin xyz="0 ${reverse*head_tilt_servo_offset} 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.STL" />
+			</geometry>
+			<material name="Grey" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 ${head_tilt_servo_offset} 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.dae" />
+			</geometry>
+		  </collision>
+		</link>
+
+
+	<!-- CAMERA HEAD -->
+		<joint name="${name}_camera_frame_joint" type="fixed">
+		  <origin xyz="0 ${reverse*camara_frame_offset} 0" rpy="${M_PI/2}  0 0" />
+		  <parent link="${name}_tilt_link"/>
+		  <child link="${name}_camera_frame"/>
+		</joint>
+		<link name="${name}_camera_frame">
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.STL" />
+			</geometry>
+			<material name="Blue" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.dae" />
+			</geometry>
+		  </collision>
+		</link>
+		
+	<!-- RIGHT CAMERA F10-->
+		<joint name="${name}_f10_camera_right_joint" type="fixed">
+		  <origin xyz="${f10_camara_offset_x} ${reverse*f10_camara_offset_y} ${f10_camara_offset_z}" rpy="0 0 0" />
+		  <parent link="${name}_camera_frame"/>
+		  <child link="${name}_f10_camera_right_frame"/>
+		</joint>
+		<link name="${name}_f10_camera_right_frame">
+		  <inertial>
+			<mass value="0.01" />
+			<origin xyz="0 0 0" />
+			<inertia  ixx="0.059" ixy="0.0"  ixz="0.0"  iyy="0.055"  iyz="0.0"  izz="0.059" />
+		  </inertial>
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
+			</geometry>
+			<material name="Black" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
+			</geometry>
+		  </collision>
+		</link>
+
+		<joint name="${name}_f10_camera_right_optical_joint" type="fixed">
+		  <origin xyz="0.0 0.0 ${f10_optical_offset}" rpy="${M_PI/2} 0 ${M_PI/2}" />
+		  <parent link="${name}_f10_camera_right_frame"/>
+		  <child link="${name}_f10_camera_right_optical_frame"/>
+		</joint>
+		<link name="${name}_f10_camera_right_optical_frame">
+		</link>
+
+	<!-- LEFT CAMERA F10-->
+		<joint name="${name}_f10_camera_left_joint" type="fixed">
+		  <origin xyz="${f10_camara_offset_x} ${f10_camara_offset_y} ${f10_camara_offset_z}" rpy="0 0 0" />
+		  <parent link="${name}_camera_frame"/>
+		  <child link="${name}_f10_camera_left_frame"/>
+		</joint>
+		<link name="${name}_f10_camera_left_frame">
+		  <inertial>
+			<mass value="0.01" />
+			<origin xyz="0 0 0" />
+			<inertia  ixx="0.059" ixy="0.0"  ixz="0.0"  iyy="0.055"  iyz="0.0"  izz="0.059" />
+		  </inertial>
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
+			</geometry>
+			<material name="Black" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
+			</geometry>
+		  </collision>
+		</link>
+
+		<joint name="${name}_f10_camera_left_optical_joint" type="fixed">
+		  <origin xyz="0.0 0.0 ${f10_optical_offset}" rpy="${M_PI/2} 0 ${M_PI/2}" />
+		  <parent link="${name}_f10_camera_left_frame"/>
+		  <child link="${name}_f10_camera_left_optical_frame"/>
+		</joint>
+		<link name="${name}_f10_camera_left_optical_frame">
+		</link>
+		
+	<!-- XTION CAMERA-->
+		<joint name="${name}_xtion_camera_joint" type="fixed">
+
+		  <origin xyz="${xtion_camara_offset_x} ${xtion_camara_offset_y} ${xtion_camara_offset_z}" rpy="0 0 0" />
+		  <parent link="${name}_camera_frame"/>
+		  <child link="${name}_xtion_camera_frame"/>
+		</joint>
+		<link name="${name}_xtion_camera_frame">
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/xtion_camera.STL" />
+			</geometry>
+			<material name="Black" />
+		  </visual>
+		  <collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+			  <mesh filename = "package://crom2_description/meshes/xtion_camera.dae" />
+			</geometry>
+		  </collision>
+		</link>
+		
+		<!--Add head_gazebo macro -->
+		<head_gazebo name="${name}" />
+		
+		<!--Add head_transmission macro -->
+		<!--head_transmission name="${name}" /-->
+		
+	</xacro:macro>
 
 </robot>

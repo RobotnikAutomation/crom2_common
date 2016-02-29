@@ -1,11 +1,21 @@
 <?xml version="1.0"?>
 
 <robot name="crom2_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<!-- Include all component files -->
+   <xacro:include filename="$(find crom2_description)/urdf/material/materials.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_base.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_trunk.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_head.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/robots/crom2.gazebo.xacro" />
+   <!--xacro:include filename="$(find crom2_description)/urdf/crom2_head.urdf.xacro" /-->
 
    <!-- Define a offsets using properties -->
-   <property name="torso_offset_x" value="0.0" />
-   <property name="torso_offset_y" value="0.0" />
-   <property name="torso_offset_z" value="0.0" />
+   <property name="reverse" value="-1.0" />
+   <property name="M_PI" value="3.1415926535897931" />
+   <property name="base_offset_x" value="0.0" />
+   <property name="base_offset_y" value="0.0" />
+   <property name="base_offset_z" value="0.0" />
    <property name="trunk_offset_x" value="0.0" />
    <property name="trunk_offset_y" value="0.0" />
    <property name="trunk_offset_z" value="1.078" />
@@ -13,28 +23,25 @@
    <property name="head_offset_y" value="0.0" />
    <property name="head_offset_z" value="0.545" />
 
-   <!-- Include all component files -->
-   <xacro:include filename="$(find crom2_description)/urdf/material/materials.urdf.xacro" />
-   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_base.urdf.xacro" />
-   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_trunk.urdf.xacro" />
-   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_head.urdf.xacro" />
-   <!--xacro:include filename="$(find crom2_description)/urdf/crom2_head.urdf.xacro" /-->
-   
- 
+    
   <link name="base_footprint">
   </link>
   
    <!-- Add the base -->
-   <base name="base" parent="base_footprint" color="Blue"/>
+   <base_model name="base" parent="base_footprint" color="Blue">
+   </base_model>
    
    <!-- Attach the trunk -->
-   <trunk name="waist" parent="base" color="Blue">
+   <trunk_model name="waist" parent="base" color="Blue">
       <origin xyz="${trunk_offset_x} ${trunk_offset_y} ${trunk_offset_z}" rpy="0 0 0" />
-   </trunk>
+   </trunk_model>
    
    <!-- Attach the head -->
-   <head name="head" parent="waist" color="Blue">
+   <head_model name="head" parent="waist" color="Blue">
       <origin xyz="${head_offset_x} ${head_offset_y} ${head_offset_z}" rpy="0 0 0" />
-   </head>
+   </head_model>
+   
+   <!--Add robot gazebo macro -->
+   <crom2_gazebo />   
 
 </robot>

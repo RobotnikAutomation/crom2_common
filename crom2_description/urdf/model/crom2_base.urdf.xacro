@@ -1,18 +1,22 @@
 <?xml version="1.0"?>
 
 <robot name="base" xmlns:xacro="http://ros.org/wiki/xacro">
+	
+  <xacro:include filename="$(find crom2_description)/urdf/gazebo/crom2_base.gazebo.xacro" />
 
   <!-- Define a number of dimensions using properties -->
   <property name="base_size_x" value="0.55" />
   <property name="base_size_y" value="0.55" />
   <property name="base_size_z" value="1.078" />
-  <property name="mesh_scale" value="1" />
-  
-  <property name="PI" value="3.1415" />
 
   <!-- The base xacro macro -->
-  <macro name="base" params="name parent color">
-    <link name="${name}_link">
+  <xacro:macro name="base_model" params="name parent color">
+    <joint name="${name}_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />        
+		<parent link="${parent}"/>
+		<child link="${name}_link" />
+	</joint>
+	<link name="${name}_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -23,16 +27,14 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <!--box size="${base_size_x} ${base_size_y} ${base_size_z}" /-->
-           <mesh filename = "package://crom2_description/meshes/CROM2_base.dae"/>
+          <mesh filename = "package://crom2_description/meshes/CROM2_base.dae"/>
         </geometry>
       </collision>
     </link>
-    <joint name="${name}_joint" type="fixed">
-		<origin xyz="0 0 0" rpy="0 0 0" />        
-		<parent link="${parent}"/>
-		<child link="${name}_link" />
-	</joint>
-  </macro>
+    
+	<!--Add base_gazebo macro -->
+	<base_gazebo name="${name}" />
+  
+  </xacro:macro>
 
  </robot>

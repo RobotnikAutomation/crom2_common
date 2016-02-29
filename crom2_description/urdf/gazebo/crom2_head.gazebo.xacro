@@ -4,39 +4,47 @@
 	
 	<xacro:macro name="head_gazebo" params="name">
 
-		<gazebo reference="${name}_start_link">
+		<gazebo reference="$${name}_base_link">
 			<fdir1 value="1 0 0"/>
 			<maxVel>2.0</maxVel>
-
 			<material>Gazebo/Grey</material>
 			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_pan_motor_link">
+			<fdir1 value="1 0 0"/>
+			<maxVel>2.0</maxVel>
 		</gazebo>
 
 		<gazebo reference="${name}_pan_link">
 			<fdir1 value="1 0 0"/>
 			<maxVel>2.0</maxVel>
-
-			<material>Gazebo/Grey</material>
-			<turnGravityOff>false</turnGravityOff>
-		</gazebo>
-
-		<gazebo reference="${name}_tilt_link">
-			<fdir1 value="1 0 0"/>
-			<maxVel>2.0</maxVel>
-
 			<material>Gazebo/Grey</material>
 			<turnGravityOff>false</turnGravityOff>
 		</gazebo>
 		
-		<gazebo reference="${name}_camera_structure_link">
+		<gazebo reference="${name}_tilt_motor_link">
+			<fdir1 value="1 0 0"/>
+			<maxVel>2.0</maxVel>
+		</gazebo>
+		
+		<gazebo reference="${name}_tilt_link">
+			<fdir1 value="1 0 0"/>
+			<material>Gazebo/FlatBlack</material>
+			<material>Gazebo/Grey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+		
+		<gazebo reference="${name}_camera_frame">
 			<material>Gazebo/FlatBlack</material>
 		</gazebo>
 		
-	   <!-- camera_head_left_link -->
-	  <gazebo reference="${name}_camera_left_link">
-		<sensor type="camera" name="camera_head_left">
+		
+	  <!-- camera_head_left_link -->
+	  <gazebo reference="${name}_f10_camera_left_optical_frame">
+		<sensor type="camera" name="${name}_f10_camera_left">
 		  <update_rate>30.0</update_rate>
-		  <camera name="camera_head_left">
+		  <camera name="${name}_f10_camera_left">
 			<horizontal_fov>1.3962634</horizontal_fov>
 			<image>
 			  <width>800</width>
@@ -73,11 +81,11 @@
 		</sensor>
 	  </gazebo>  
 	  
-		<!-- camera_head_right_link -->
-	  <gazebo reference="${name}_camera_right_link">
-		<sensor type="camera" name="camera_head_right">
+	  <!-- camera_head_right_link -->
+	  <gazebo reference="{name}_f10_camera_right_optical_frame">
+		<sensor type="camera" name="${name}_f10_camera_right">
 		  <update_rate>30.0</update_rate>
-		  <camera name="camera_head_right">
+		  <camera name="${name}_f10_camera_right">
 			<horizontal_fov>1.3962634</horizontal_fov>
 			<image>
 			  <width>800</width>
