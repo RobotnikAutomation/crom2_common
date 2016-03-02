@@ -73,7 +73,7 @@
 			  <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
 				<alwaysOn>true</alwaysOn>
 				<updateRate>0.0</updateRate>
-				<cameraName>crom/camera_head_right</cameraName>
+				<cameraName>crom2/camera_head_right</cameraName>
 				<imageTopicName>image_raw</imageTopicName>
 				<cameraInfoTopicName>camera_head_right_info</cameraInfoTopicName>
 				<frameName>camera_hand_right_link</frameName>
@@ -120,7 +120,7 @@
 			  <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
 				<alwaysOn>true</alwaysOn>
 				<updateRate>0.0</updateRate>
-				<cameraName>crom/camera_head_left</cameraName>
+				<cameraName>crom2/camera_head_left</cameraName>
 				<imageTopicName>image_raw</imageTopicName>
 				<cameraInfoTopicName>camera_head_left_info</cameraInfoTopicName>
 				<frameName>camera_head_left_link</frameName>

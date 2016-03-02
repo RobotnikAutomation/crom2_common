@@ -17,7 +17,7 @@
 			 </actuator>
 		</transmission>
 		
-		<transmission name="${name}_joint_tilt_transmission">
+		<transmission name="${name}_joint_tilt_transmisssion">
 			 <type>transmission_interface/SimpleTransmission</type>
 			 <joint name="${name}_tilt_joint">
 				 <hardwareInterface>PositionJointInterface</hardwareInterface>
