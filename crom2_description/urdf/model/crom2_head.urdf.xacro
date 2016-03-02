@@ -3,7 +3,7 @@
 <robot name="head" xmlns:xacro="http://ros.org/wiki/xacro">
 	
 	<xacro:include filename="$(find crom2_description)/urdf/gazebo/crom2_head.gazebo.xacro" />
-	<!--xacro:include filename="$(find crom2_description)/urdf/transmission/crom2_head.transmission.xacro" /-->
+	<xacro:include filename="$(find crom2_description)/urdf/transmission/crom2_head.transmission.xacro" />
 
 	<!-- Define a number of dimensions using properties -->
 	<xacro:property name="head_pan_joint_offset_z" value="0.111" />
@@ -21,7 +21,7 @@
 	<xacro:property name="xtion_camara_offset_z" value="0.065" />
 	<xacro:property name="head_joint_damping" value="0.0" />
 	<xacro:property name="head_joint_friction" value="0.0" />
-	<xacro:property name="head_joint_effort_limit" value="100.0" />
+	<xacro:property name="head_joint_effort_limit" value="100.0" />_pan_joint
 	<xacro:property name="head_joint_velocity_limit" value="100.0" />
 	<xacro:property name="head_pan_joint_upper_limit" value="${M_PI/2}" />    
 	<xacro:property name="head_pan_joint_lower_limit" value="${reverse*M_PI/2}" /> 
@@ -43,7 +43,7 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.STL"/>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae"/>
 			</geometry>
 			<material name="Blue" />
 		  </visual>
@@ -53,6 +53,14 @@
 			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae" />
 			</geometry>
 		  </collision>
+		  <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="1" />
+			<inertia
+			  ixx="1.0" ixy="0.0" ixz="0.0"
+			  iyy="1.0" iyz="0.0"
+			  izz="1.0" />
+		  </inertial>
 		</link>
 
 	<!-- PAN HEAD -->
@@ -66,7 +74,7 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
+			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
 			</geometry>
 			<material name="Black" />
 		  </visual>
@@ -76,6 +84,14 @@
 			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
 			</geometry>
 		  </collision>
+		  <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="1" />
+			<inertia
+			  ixx="1.0" ixy="0.0" ixz="0.0"
+			  iyy="1.0" iyz="0.0"
+			  izz="1.0" />
+		  </inertial>
 		</link>
 
 		<joint name="${name}_pan_joint" type="revolute">
@@ -91,7 +107,7 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.STL" />
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.dae" />
 			</geometry>
 			<material name="Blue" />
 		  </visual>
@@ -101,6 +117,14 @@
 			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_2.dae" />
 			</geometry>
 		  </collision>
+		  <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="1" />
+			<inertia
+			  ixx="1.0" ixy="0.0" ixz="0.0"
+			  iyy="1.0" iyz="0.0"
+			  izz="1.0" />
+		  </inertial>
 		</link>
 
 	<!-- TILT HEAD -->
@@ -117,7 +141,7 @@
 			<visual>
 			<origin xyz="0 0 ${reverse*head_tilt_servo_offset}" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.STL" />
+			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
 			</geometry>
 			<material name="Black" />
 		  </visual>
@@ -127,6 +151,14 @@
 			  <mesh filename = "package://crom2_description/meshes/dynamixel_L42.dae" />
 			</geometry>
 		  </collision>
+		  <inertial>
+			<origin xyz="0 0 ${head_tilt_servo_offset}" rpy="0 0 0" />
+			<mass value="1" />
+			<inertia
+			  ixx="1.0" ixy="0.0" ixz="0.0"
+			  iyy="1.0" iyz="0.0"
+			  izz="1.0" />
+		  </inertial>
 		</link>
 
 		<joint name="${name}_tilt_motor_joint" type="fixed">
@@ -138,7 +170,7 @@
 		  <visual>
 			<origin xyz="0 ${reverse*head_tilt_servo_offset} 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.STL" />
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_3.dae" />
 			</geometry>
 			<material name="Grey" />
 		  </visual>
@@ -161,7 +193,7 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.STL" />
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.dae" />
 			</geometry>
 			<material name="Blue" />
 		  </visual>
@@ -171,6 +203,14 @@
 			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_4.dae" />
 			</geometry>
 		  </collision>
+		  <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="1" />
+			<inertia
+			  ixx="1.0" ixy="0.0" ixz="0.0"
+			  iyy="1.0" iyz="0.0"
+			  izz="1.0" />
+		  </inertial>
 		</link>
 		
 	<!-- RIGHT CAMERA F10-->
@@ -183,7 +223,10 @@
 		  <inertial>
 			<mass value="0.01" />
 			<origin xyz="0 0 0" />
-			<inertia  ixx="0.059" ixy="0.0"  ixz="0.0"  iyy="0.055"  iyz="0.0"  izz="0.059" />
+			<inertia  
+				ixx="0.059" ixy="0.0"  ixz="0.0"  
+				iyy="0.055"  iyz="0.0"  
+				izz="0.059" />
 		  </inertial>
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
@@ -223,7 +266,7 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
+			  <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
 			</geometry>
 			<material name="Black" />
 		  </visual>
@@ -254,7 +297,7 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/xtion_camera.STL" />
+			  <mesh filename = "package://crom2_description/meshes/xtion_camera.dae " />
 			</geometry>
 			<material name="Black" />
 		  </visual>
@@ -264,14 +307,22 @@
 			  <mesh filename = "package://crom2_description/meshes/xtion_camera.dae" />
 			</geometry>
 		  </collision>
+		  <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="1" />
+			<inertia
+			  ixx="1.0" ixy="0.0" ixz="0.0"
+			  iyy="1.0" iyz="0.0"
+			  izz="1.0" />
+		  </inertial>
 		</link>
+		
+		<!--Add head_transmission macro -->
+		<head_transmission name="${name}" />
 		
 		<!--Add head_gazebo macro -->
 		<head_gazebo name="${name}" />
-		
-		<!--Add head_transmission macro -->
-		<!--head_transmission name="${name}" /-->
-		
+			
 	</xacro:macro>
 
 </robot>

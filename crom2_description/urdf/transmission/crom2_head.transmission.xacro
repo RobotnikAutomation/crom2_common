@@ -2,22 +2,26 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 	
+	<xacro:property name="head_mechanical_reduction" value="1.0" />
+	
 	<xacro:macro name="head_transmission" params="name">
 		
-		<xacro:property name="head_mechanical_reduction" value="1.0" />
-
 		<transmission name="${name}_joint_pan_transmission">
 			 <type>transmission_interface/SimpleTransmission</type>
-			 <joint name="${name}_pan_joint" />
+			 <joint name="${name}_pan_joint">
+			   <hardwareInterface>PositionJointInterface</hardwareInterface>
+		     </joint>
 			 <actuator name="${name}_pan_motor">
 			   <hardwareInterface>PositionJointInterface</hardwareInterface>
 			   <mechanicalReduction>${head_mechanical_reduction}</mechanicalReduction>
 			 </actuator>
 		</transmission>
 		
-		<transmission name="${name}_joint_tilt_transmisssion">
+		<transmission name="${name}_joint_tilt_transmission">
 			 <type>transmission_interface/SimpleTransmission</type>
-			 <joint name="${name}_tilt_joint" />
+			 <joint name="${name}_tilt_joint">
+				 <hardwareInterface>PositionJointInterface</hardwareInterface>
+		     </joint>
 			 <actuator name="${name}_tilt_motor">
 			   <hardwareInterface>PositionJointInterface</hardwareInterface>
 			   <mechanicalReduction>${head_mechanical_reduction}</mechanicalReduction>

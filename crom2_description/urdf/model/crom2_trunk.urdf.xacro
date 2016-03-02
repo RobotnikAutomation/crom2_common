@@ -3,6 +3,7 @@
 <robot name="trunk" xmlns:xacro="http://ros.org/wiki/xacro">
 	
   <xacro:include filename="$(find crom2_description)/urdf/gazebo/crom2_trunk.gazebo.xacro" />
+  <xacro:include filename="$(find crom2_description)/urdf/transmission/crom2_trunk.transmission.xacro" />
 
   <!-- Define a number of dimensions using properties -->
   <property name="trunk_size_x" value="0.45" />
@@ -23,12 +24,15 @@
 		<inertial>
 		  <mass value="22.07245" />
 		  <origin xyz="0 0 0" />
-		  <inertia  ixx="1259.328" ixy="-0.695"  ixz="15.497"  iyy="934.927"  iyz="-0.007"  izz="771.083" />
+		  <inertia 
+		  ixx="1259.328" ixy="-0.695"  ixz="15.497"
+		  iyy="934.927"  iyz="-0.007"  
+		  izz="771.083"/>
 		</inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename = "package://crom2_description/meshes/CROM2_trunk.STL"/>
+          <mesh filename = "package://crom2_description/meshes/CROM2_trunk.dae"/>
         </geometry>
         <material name="${color}" />
       </visual>
@@ -42,6 +46,9 @@
     
     <!--Add trunk_gazebo macro -->
 	<trunk_gazebo name="${name}" />
+	
+	<!--Add trunk_gazebo macro -->
+	<trunk_transmission name="${name}" />
 	
   </xacro:macro>
 

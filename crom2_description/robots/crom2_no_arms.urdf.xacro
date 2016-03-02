@@ -24,11 +24,12 @@
    <property name="head_offset_z" value="0.545" />
 
     
-  <link name="base_footprint">
-  </link>
+   <link name="base_footprint">
+   </link>
   
    <!-- Add the base -->
    <base_model name="base" parent="base_footprint" color="Blue">
+	    <origin xyz="${base_offset_x} ${base_offset_y} ${base_offset_z}" rpy="0 0 0" />
    </base_model>
    
    <!-- Attach the trunk -->
