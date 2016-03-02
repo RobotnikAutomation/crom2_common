@@ -5,7 +5,7 @@
 	<xacro:macro name="head_gazebo" params="name">
 
 		<gazebo reference="${name}_frame_link">
-			<material>Gazebo/Grey</material>
+			<material>Gazebo/Blue</material>
 			<turnGravityOff>false</turnGravityOff>
 			<selfCollide>true</selfCollide>
 		</gazebo>
@@ -17,7 +17,7 @@
 		</gazebo>
 
 		<gazebo reference="${name}_pan_link">
-			<material>Gazebo/Grey</material>
+			<material>Gazebo/Blue</material>
 			<turnGravityOff>false</turnGravityOff>
 			<selfCollide>true</selfCollide>
 		</gazebo>
@@ -29,13 +29,13 @@
 		</gazebo>
 		
 		<gazebo reference="${name}_tilt_link">
-			<material>Gazebo/Grey</material>
+			<material>Gazebo/FlatBlack</material>
 			<turnGravityOff>false</turnGravityOff>
 			<selfCollide>true</selfCollide>
 		</gazebo>
 		
 		<gazebo reference="${name}_camera_frame">
-			<material>Gazebo/Grey</material>
+			<material>Gazebo/Blue</material>
 			<turnGravityOff>false</turnGravityOff>
 			<selfCollide>true</selfCollide>
 		</gazebo>
