@@ -17,16 +17,7 @@
 		<child link="${name}_link" />
 	</joint>
 	<link name="${name}_link">
-		 <!-- Inertial same to crom -->
-		<inertial>
-		  <mass value="800.0" />
-		  <origin xyz="0 0 0" />
-		  <inertia  
-			ixx="3.737" ixy="0.008"  ixz="-0.144" 
-			iyy="8.311"  iyz="-0.004"  
-			izz="8.893" />
-		</inertial>
-      <visual>
+	  <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename = "package://crom2_description/meshes/CROM2_base.dae"/>
@@ -39,6 +30,15 @@
           <mesh filename = "package://crom2_description/meshes/CROM2_base.dae"/>
         </geometry>
       </collision>
+      <!-- Inertial same to crom -->
+		<inertial>
+		  <mass value="800.0" />
+		  <origin xyz="0 0 0" />
+		  <inertia  
+			ixx="3.737" ixy="0.008"  ixz="-0.144" 
+			iyy="8.311"  iyz="-0.004"  
+			izz="8.893" />
+		</inertial>
     </link>
     
 	<!--Add base_gazebo macro -->
