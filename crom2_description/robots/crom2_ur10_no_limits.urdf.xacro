@@ -15,11 +15,11 @@
    <property name="pi_2" value="1.57079" />
 
    <!-- Include all component files -->
-   <xacro:include filename="$(find crom2_description)/urdf/materials.urdf.xacro" />
-   <xacro:include filename="$(find crom2_description)/urdf/crom2_base.urdf.xacro" />
-   <xacro:include filename="$(find crom2_description)/urdf/crom2_trunk.urdf.xacro" />
-   <xacro:include filename="$(find crom2_description)/urdf/crom2_head.urdf.xacro" />
-   <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/material/materials.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_base.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_trunk.urdf.xacro" />
+   <xacro:include filename="$(find crom2_description)/urdf/model/crom2_head.urdf.xacro" />
+   <!--xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" /-->
    <xacro:include filename="$(find ur_description)/urdf/ur10.urdf.xacro" />
 
    

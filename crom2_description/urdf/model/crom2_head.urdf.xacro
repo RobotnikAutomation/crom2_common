@@ -297,7 +297,7 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/xtion_camera.dae " />
+			  <mesh filename = "package://crom2_description/meshes/xtion_camera.dae" />
 			</geometry>
 			<material name="Black" />
 		  </visual>
