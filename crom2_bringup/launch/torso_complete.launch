@@ -7,5 +7,15 @@
 	<!-- start robot_state_publisher -->
 	<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher"/>
 	
+	<!-- Controller of the Dynamixel servos-->
+	<include file="$(find crom2_bringup)/launch/torso_head_controller.launch"/>
+
+	<!-- RGBD Camera (Asus Xtion Pro Live)-->
+	<include file="$(find crom2_bringup)/launch/rgbd_camera.launch"/>
 	
+	<!-- Head stereo cameras (2x Pointgrey)-->
+	<include file="$(find crom2_bringup)/launch/pointgrey_cameras.launch"/>
+
+	<!-- Inputs / outputs module -->
+	<include file="$(find crom2_bringup)/launch/inputs_outputs.launch"/>
 </launch>
