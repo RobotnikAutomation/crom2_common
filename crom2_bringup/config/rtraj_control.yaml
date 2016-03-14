@@ -1,0 +1,8 @@
+# NOTE: The group name has nothing to do with MoveIt configured groups
+
+# Groups for FollowJointTrajectories
+groups: { 
+ torso_head: { name: torso_head, type: standard, joints: [waist_joint, head_pan_joint, head_tilt_joint], command_topic: /joint_commands}
+}
+
+
