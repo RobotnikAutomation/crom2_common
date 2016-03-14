@@ -25,8 +25,8 @@
 	<xacro:property name="head_joint_velocity_limit" value="100.0" />
 	<xacro:property name="head_pan_joint_upper_limit" value="${M_PI/2}" />    
 	<xacro:property name="head_pan_joint_lower_limit" value="${reverse*M_PI/2}" /> 
-	<xacro:property name="head_tilt_joint_upper_limit" value="${M_PI/2}" />
-	<xacro:property name="head_tilt_joint_lower_limit" value="${reverse*M_PI/2}" />
+	<xacro:property name="head_tilt_joint_upper_limit" value="1.0" />
+	<xacro:property name="head_tilt_joint_lower_limit" value="-1.0" />
 	<xacro:property name="asus_xtion_pro_depth_rel_rgb_py" value="0.0270" />
 	<xacro:property name="asus_xtion_pro_cam_rel_rgb_py"   value="0.0220" />
 	
