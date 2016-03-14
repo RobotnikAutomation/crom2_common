@@ -233,7 +233,7 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.STL" />
+			  <mesh filename = "package://crom2_description/meshes/FL2-010-R0-camera.dae" />
 			</geometry>
 			<material name="Black" />
 		  </visual>
