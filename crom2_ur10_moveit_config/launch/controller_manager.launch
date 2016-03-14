@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
+  <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
+  <!-- The rest of the params are specific to this plugin -->
+  <rosparam file="$(find crom2_ur10_moveit_config)/config/controllers.yaml"/>
+
+</launch>

@@ -5,4 +5,4 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/crom2_robot.srdf
   CONFIG:
-    generated_timestamp: 1455730059
+    generated_timestamp: 1457971117

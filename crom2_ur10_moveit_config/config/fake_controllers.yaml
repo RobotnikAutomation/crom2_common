@@ -76,4 +76,4 @@ controller_list:
       - head_tilt_joint
   - name: fake_head_eef_controller
     joints:
-      []
+      - head_tilt_joint
