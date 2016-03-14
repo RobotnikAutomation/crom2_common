@@ -27,6 +27,8 @@
 	<xacro:property name="head_pan_joint_lower_limit" value="${reverse*M_PI/2}" /> 
 	<xacro:property name="head_tilt_joint_upper_limit" value="${M_PI/2}" />
 	<xacro:property name="head_tilt_joint_lower_limit" value="${reverse*M_PI/2}" />
+	<xacro:property name="asus_xtion_pro_depth_rel_rgb_py" value="0.0270" />
+	<xacro:property name="asus_xtion_pro_cam_rel_rgb_py"   value="0.0220" />
 	
      
 	<!-- Define the head -->
@@ -187,9 +189,9 @@
 		<joint name="${name}_camera_frame_joint" type="fixed">
 		  <origin xyz="0 ${reverse*camara_frame_offset} 0" rpy="${M_PI/2}  0 0" />
 		  <parent link="${name}_tilt_link"/>
-		  <child link="${name}_camera_frame"/>
+		  <child link="${name}_camera_link"/>
 		</joint>
-		<link name="${name}_camera_frame">
+		<link name="${name}_camera_link">
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
@@ -216,7 +218,7 @@
 	<!-- RIGHT CAMERA F10-->
 		<joint name="${name}_f10_camera_right_joint" type="fixed">
 		  <origin xyz="${f10_camara_offset_x} ${reverse*f10_camara_offset_y} ${f10_camara_offset_z}" rpy="0 0 0" />
-		  <parent link="${name}_camera_frame"/>
+		  <parent link="${name}_camera_link"/>
 		  <child link="${name}_f10_camera_right_frame"/>
 		</joint>
 		<link name="${name}_f10_camera_right_frame">
@@ -254,7 +256,7 @@
 	<!-- LEFT CAMERA F10-->
 		<joint name="${name}_f10_camera_left_joint" type="fixed">
 		  <origin xyz="${f10_camara_offset_x} ${f10_camara_offset_y} ${f10_camara_offset_z}" rpy="0 0 0" />
-		  <parent link="${name}_camera_frame"/>
+		  <parent link="${name}_camera_link"/>
 		  <child link="${name}_f10_camera_left_frame"/>
 		</joint>
 		<link name="${name}_f10_camera_left_frame">
@@ -286,14 +288,14 @@
 		<link name="${name}_f10_camera_left_optical_frame">
 		</link>
 		
-	<!-- XTION CAMERA-->
+		<!-- XTION CAMERA-->
 		<joint name="${name}_xtion_camera_joint" type="fixed">
 
 		  <origin xyz="${xtion_camara_offset_x} ${xtion_camara_offset_y} ${xtion_camara_offset_z}" rpy="0 0 0" />
-		  <parent link="${name}_camera_frame"/>
-		  <child link="${name}_xtion_camera_frame"/>
+		  <parent link="${name}_camera_link"/>
+		  <child link="${name}_xtion_camera_link"/>
 		</joint>
-		<link name="${name}_xtion_camera_frame">
+		<link name="${name}_xtion_camera_link">
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
@@ -317,6 +319,37 @@
 		  </inertial>
 		</link>
 		
+		<joint name="${name}_xtion_camera_rgb_joint" type="fixed">
+		  <origin xyz="0 ${asus_xtion_pro_cam_rel_rgb_py} 0"
+				  rpy="0 0 0"/>
+		  <parent link="${name}_xtion_camera_link"/>
+		  <child link="${name}_xtion_camera_rgb_frame" />
+		</joint>
+		<link name="${name}_xtion_camera_rgb_frame"/>
+		
+
+		<joint name="${name}_xtion_camera_rgb_optical_joint" type="fixed">
+		  <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+		  <parent link="${name}_xtion_camera_rgb_frame" />
+		  <child link="${name}_xtion_camera_rgb_optical_frame" />
+		</joint>
+		<link name="${name}_xtion_camera_rgb_optical_frame"/>
+
+		<joint name="${name}_xtion_camera_depth_joint" type="fixed">
+		  <origin xyz="0 ${asus_xtion_pro_depth_rel_rgb_py} 0" rpy="0 0 0" />
+		  <parent link="${name}_xtion_camera_rgb_frame" />
+		  <child link="${name}_xtion_camera_depth_frame" />
+		</joint>
+		<link name="${name}_xtion_camera_depth_frame"/>
+
+		<joint name="${name}_xtion_camera_depth_optical_joint" type="fixed">
+		  <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+		  <parent link="${name}_xtion_camera_depth_frame" />
+		  <child link="${name}_xtion_camera_depth_optical_frame" />
+		</joint>
+		<link name="${name}_xtion_camera_depth_optical_frame"/>
+
+    
 		<!--Add head_transmission macro -->
 		<head_transmission name="${name}" />
 		

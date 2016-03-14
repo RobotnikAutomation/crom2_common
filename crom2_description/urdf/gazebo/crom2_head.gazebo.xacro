@@ -34,7 +34,7 @@
 			<selfCollide>true</selfCollide>
 		</gazebo>
 		
-		<gazebo reference="${name}_camera_frame">
+		<gazebo reference="${name}_camera_link">
 			<material>Gazebo/Blue</material>
 			<turnGravityOff>false</turnGravityOff>
 			<selfCollide>true</selfCollide>
@@ -134,7 +134,7 @@
 			</sensor>
 		</gazebo> 
 
-		<gazebo reference="${name}_xtion_camera_frame">
+		<gazebo reference="${name}_xtion_camera_link">
 			<material>Gazebo/FlatBlack</material>
 			<turnGravityOff>false</turnGravityOff>
 			<selfCollide>true</selfCollide>
