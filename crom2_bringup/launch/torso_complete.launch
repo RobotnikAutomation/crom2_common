@@ -15,7 +15,7 @@
 	<include file="$(find crom2_bringup)/launch/rgbd_camera.launch"/>
 	
 	<!-- Head stereo cameras (2x Pointgrey)-->
-	<include file="$(find crom2_bringup)/launch/pointgrey_cameras.launch"/>
+	<!--include file="$(find crom2_bringup)/launch/pointgrey_cameras.launch"/-->
 
 	<!-- Inputs / outputs module -->
 	<include file="$(find crom2_bringup)/launch/inputs_outputs.launch"/>
