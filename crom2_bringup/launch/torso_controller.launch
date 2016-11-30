@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+	
+	<node name="robotnik_dpro_controller_torso_head" pkg="robotnik_dpro_controller" type="robotnik_dpro_controller_node" respawn="false" output="screen">
+		<rosparam command="load" file="$(find crom2_bringup)/config/servos_torso.yaml"/>	
+                <param name="port" type="string" value="/dev/ttyUSB0"/>
+
+	</node>
+</launch>
