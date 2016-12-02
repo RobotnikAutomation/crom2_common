@@ -23,4 +23,9 @@
 	<!-- trajectory control for waist and head -->
 	<include file="$(find crom2_bringup)/launch/rtraj_control.launch"/>
 
+	<!-- UR10 left arm -->
+	<include file="$(find crom2_bringup)/launch/ur10_left_arm.launch"/>
+
+        <!-- UR10 right arm -->
+	<include file="$(find crom2_bringup)/launch/ur10_right_arm.launch"/>
 </launch>
