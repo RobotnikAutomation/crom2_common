@@ -45,14 +45,14 @@
 		  <visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae"/>
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1_1.dae"/>
 			</geometry>
 			<material name="Blue" />
 		  </visual>
 		  <collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1.dae" />
+			  <mesh filename = "package://crom2_description/meshes/CROM2_pantilt_1_1.dae" />
 			</geometry>
 		  </collision>
 		  <inertial>
