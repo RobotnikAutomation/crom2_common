@@ -12,6 +12,13 @@ servos:
   max_vel_rads: 1.460844
   min_rad: -1.57
   max_rad: 1.57
+  vel_i_gain: 2
+  vel_p_gain: 600
+  pos_p_gain: 10
+  dynamic_pid: true
+  vel_i_gain_idle: 85
+  vel_p_gain_idle: 600
+  pos_p_gain_idle: 10
 
 # PAN
 - id: 2
@@ -25,6 +32,9 @@ servos:
   max_vel_rads: 2.98452
   min_rad: -1.57
   max_rad: 1.57
+  vel_i_gain: 60
+  vel_p_gain: 300
+  pos_p_gain: 170
 
 
 # TILT
@@ -39,3 +49,7 @@ servos:
   max_vel_rads: 2.98452
   min_rad: -1.57
   max_rad: 1.57
+  vel_i_gain: 30
+  vel_p_gain: 600
+  pos_p_gain: 60
+
